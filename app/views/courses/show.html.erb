@@ -1,2 +1,32 @@
-<h1>Courses#show</h1>
-<p>Find me in app/views/courses/show.html.erb</p>
+<h2>single course</h2>
+<%= link_to 'delete this course ?...', confirm_delete_course_path %>
+
+<%= form_with model: @course do |f| %>
+  <table class="single-table" border=1>
+    <tr>
+      <th>course_id</th>
+      <td><%= @course.course_id %></td>
+    </tr>
+    <tr>
+      <th>course_title</th>
+      <td><%= f.text_area :course_title %></td>
+    </tr>
+    <tr>
+      <th>topic</th>
+      <td><%= f.text_area :topic %></td>
+    </tr>
+    <tr>
+      <th>price</th>
+      <td><%= f.text_area :price %></td>
+    </tr>
+    <tr>
+      <th>level_id</th>
+      <td><%= f.text_area :level_id %></td>
+    </tr>
+    <tr>
+      <th>category</th>
+      <td><%= f.text_area :category %></td>
+    </tr>
+  </table>
+  <%= f.submit "submit" %>
+<% end %>

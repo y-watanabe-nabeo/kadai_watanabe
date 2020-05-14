@@ -1,2 +1,30 @@
-<h1>Courses#new</h1>
-<p>Find me in app/views/courses/new.html.erb</p>
+<h2>new course</h2>
+<%= form_with model: @course do |f| %>
+  <table class="new-table" border=1>
+    <tr>
+      <th>course_id</th>
+      <td><%= f.text_area :course_id %></td>
+    </tr>
+    <tr>
+      <th>course_title</th>
+      <td><%= f.text_area :course_title %></td>
+    </tr>
+    <tr>
+      <th>topic</th>
+      <td><%= f.text_area :topic %></td>
+    </tr>
+    <tr>
+      <th>price</th>
+      <td><%= f.text_area :price %></td>
+    </tr>
+    <tr>
+      <th>level_id</th>
+      <td><%= f.text_area :level_id %></td>
+    </tr>
+    <tr>
+      <th>category</th>
+      <td><%= f.text_area :category %></td>
+    </tr>
+  </table>
+  <%= f.submit "submit" %>
+<% end %>
