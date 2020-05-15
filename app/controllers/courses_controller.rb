@@ -6,8 +6,10 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
     if @course.save
+      flash[:success] = "Successfully created!"
       redirect_to @course
     else
+      flash.now[:failer] = "Invalid parameter!"
       render 'new'
     end
   end
