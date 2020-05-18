@@ -1,22 +1,24 @@
 class TopPagesController < ApplicationController
+
   def top
+    Rails.cache.delete('courses')
   end
 
   def search_keyword
-    if search_params[:keyword].empty?
+    if search_params[:keyword].blank? && !Rails.cache.exist?('courses')
       redirect_to root_path
     else
-      @courses = Course.where("CONCAT(course_title, topic, category) LIKE ?", "%#{ search_params[:keyword] }%")
-      render "courses/index.html.erb"
+      @courses = Rails.cache.fetch("courses") { Course.where("CONCAT(course_title, topic, category) LIKE ?", "%#{ search_params[:keyword] }%") }
+      render "courses/index"
     end
   end
 
   def search_category
-    if search_params[:category].empty?
+    if search_params[:category].blank? && !Rails.cache.exist?('courses')
       redirect_to root_path
     else
-      @courses = Course.where("category LIKE ?", "%#{ search_params[:category] }%")
-      render "courses/index.html.erb"
+      @courses = Rails.cache.fetch("courses") { Course.where("category LIKE ?", "%#{ search_params[:category] }%") }
+      render "courses/index"
     end
   end
 

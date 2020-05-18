@@ -6,4 +6,6 @@ class Course < ApplicationRecord
   validates :course_title, presence: true
   validates :price, numericality: :only_integer, presence: true
   validates :level_id, numericality: :only_integer, presence: true
+
+  scope :categories, -> { select(:category).distinct }
 end

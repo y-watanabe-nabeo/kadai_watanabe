@@ -1,0 +1,18 @@
+%p
+  = @courses.count
+  courses found.
+.multi-table
+  %table{:border => "1"}
+    %tr
+      %th course_id
+      %th title
+      %th price
+      %th level_id
+      %th category
+    - @courses.each do |course|
+      %tr
+        %td= link_to course.course_id, course_path(course)
+        %td= course.course_title
+        %td= course.price
+        %td= course.level_id
+        %td= course.category

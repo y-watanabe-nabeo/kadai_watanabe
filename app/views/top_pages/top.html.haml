@@ -1,0 +1,21 @@
+.main
+  %h2 Training DB Webapp
+  %table{:cellpadding => "8"}
+    %tr
+      %td= link_to image_tag("top.png", alt: "top", id: "top-icon", size: "100x100"), courses_path
+      %td= link_to image_tag("registration.png", alt: "registration", id: "reg-icon", size: "100x100"), new_course_path
+      %td= link_to image_tag("allcourse.png", alt: "allcourse", id: "all-icon", size: "100x100"), courses_path
+    %tr
+      %td Top page
+      %td Create course
+      %td All course
+  %h2 Search
+  = link_to 'all course', courses_path
+  = form_tag(controller: :top_pages, action: :search_keyword, method: :post) do
+    = label_tag "keyword"
+    = text_field_tag :keyword
+    = submit_tag "submit"
+  = form_tag(controller: :top_pages, action: :search_category, method: :post) do
+    = label_tag "category"
+    = select_tag :categories, options_from_collection_for_select(Course.categories, :course_id, :category)
+    = submit_tag "submit"

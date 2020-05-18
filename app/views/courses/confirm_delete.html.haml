@@ -1,0 +1,20 @@
+%table.confirm-delete-table{:border => "1"}
+  %tr
+    %th course_id
+    %td= @course.course_id
+  %tr
+    %th course_title
+    %td= @course.course_title
+  %tr
+    %th topic
+    %td= @course.topic
+  %tr
+    %th price
+    %td= @course.price
+  %tr
+    %th level_id
+    %td= @course.level_id
+  %tr
+    %th category
+    %td= @course.category
+= link_to "delete", @course, method: :delete, data: {confirm: "You sure?" }

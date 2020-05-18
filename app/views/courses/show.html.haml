@@ -1,0 +1,26 @@
+.notification
+  - flash.each do |key, value|
+    = content_tag(:div, value, class: key)
+%h2 single course
+= link_to 'delete this course ?...', confirm_delete_course_path
+= form_with model: @course do |f|
+  %table.single-table{:border => "1"}
+    %tr
+      %th course_id
+      %td= @course.course_id
+    %tr
+      %th course_title
+      %td= f.text_area :course_title
+    %tr
+      %th topic
+      %td= f.text_area :topic
+    %tr
+      %th price
+      %td= f.text_area :price
+    %tr
+      %th level_id
+      %td= f.text_area :level_id
+    %tr
+      %th category
+      %td= f.text_area :category
+  = f.submit "submit"
